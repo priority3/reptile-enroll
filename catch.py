@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import xlwt
-import os
 import re
 def get(url):
   return requests.get(url)

@@ -19,11 +19,10 @@ def save_data(sheet_name:str,data: list,save_path:str):
           sheet.write(i, j, data[i][j])
   book.save(save_path)
   print('saved done!')
-def catch_site(url:str,is_title:bool=False,text_label:str='tr'):
+def catch_site(url:str,is_title:bool=False,text_label:str='span'):
   res = get(url)
   res.encoding = 'gbk2312'
   content = BeautifulSoup(res.text, 'html.parser')
-  print(content)
   data_list = content.find_all('tr')
   title = content.find_all('title')
   save_raw_path = re.sub(r'\.','_',re_url_path.search(url).group(1))
@@ -34,6 +33,7 @@ def catch_site(url:str,is_title:bool=False,text_label:str='tr'):
     save_path = './data/' + re_find_title.findall(str(title))[0] + '.xls'
 
   find_text = r'<'+text_label+'.*?>([\s\S]*?)</'+text_label+'*?>'
+  print(find_text)
   re_find_text = re.compile(find_text, re.M)
 
   for i in range(len(data_list)):

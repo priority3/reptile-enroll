@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import xlwt
 import re
 def get(url):
-  head = {  # 模拟浏览器头部信息，向豆瓣服务器发送消息
+  head = {
     "User-Agent": "Mozilla / 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 80.0.3987.122  Safari / 537.36"
   }
   return requests.get(url,headers=head)
